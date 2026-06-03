@@ -18,8 +18,8 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
         <div className="relative w-full h-full">
           <picture className="w-full h-full block" data-carrousel-item>
             <img
-              className="h-full w-full object-cover"
-              src={url}
+              className="h-full w-full object-cover object-[80%_12%]"
+              src={`https://image.tmdb.org/t/p/w500/${url}`}
               alt={`${title}-${index}`}
             />
           </picture>

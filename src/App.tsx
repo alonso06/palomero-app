@@ -14,17 +14,17 @@ function App() {
     setTrendingMovies(movies);
   };
 
-  // useEffect(() => {
-  //   console.log("useeffect");
-  //   getTrendingMovies();
-  // }, []);
+  useEffect(() => {
+    console.log("useeffect");
+    getTrendingMovies();
+  }, []);
 
   return (
     <>
       <Header />
       <section className="w-full h-screen text-black flex flex-col justify-center items-center">
         {/* SearchMovies */}
-        <Carrousel></Carrousel>
+        <Carrousel movies={trendingMovies}></Carrousel>
       </section>
     </>
   );

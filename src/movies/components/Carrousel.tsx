@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Card";
+import type { Movie } from "../interfaces/movie.interface";
 
 const mockData = [
   {
@@ -31,17 +32,23 @@ const mockData = [
   },
 ];
 
+type Props = {
+  movies: Movie[];
+  autoslide: boolean;
+  timeForSlide: number;
+};
+
 export const Carrousel = ({
-  movies = mockData,
+  movies,
   autoslide = true,
-  timeForSlide = 3000,
-}) => {
+  timeForSlide = 5000,
+}: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (autoslide) {
       const intervalId = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % mockData.length);
+        setCurrentIndex((prev) => (prev + 1) % movies.length);
       }, timeForSlide);
       return () => {
         clearInterval(intervalId);
@@ -50,11 +57,11 @@ export const Carrousel = ({
   }, [autoslide, timeForSlide, movies.length]);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % mockData.length);
+    setCurrentIndex((prev) => (prev + 1) % movies.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + mockData.length) % mockData.length);
+    setCurrentIndex((prev) => (prev - 1 + movies.length) % movies.length);
   };
 
   return (
@@ -64,7 +71,7 @@ export const Carrousel = ({
           className="relative w-full h-3/4 bg-gray-500 overflow-hidden "
           data-slot="carrousel-content"
         >
-          {mockData.map((movie, index) => {
+          {movies.map((movie, index) => {
             return (
               <Card
                 movie={movie}

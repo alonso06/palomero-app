@@ -4,6 +4,5 @@ export interface Movie {
   url: string;
   overview: string;
   popularity: number;
-  // release_date: Date;
-  release_date: string;
+  release_date: Date;
 }
