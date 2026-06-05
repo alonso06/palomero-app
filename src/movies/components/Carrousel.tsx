@@ -2,35 +2,35 @@ import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import type { Movie } from "../interfaces/movie.interface";
 
-const mockData = [
-  {
-    id: 1,
-    title: "MOVIE 01",
-    url: "https://picsum.photos/seed/picsum/200/300",
-    overview:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-    popularity: 1222,
-    release_date: "26/06/12",
-  },
-  {
-    id: 2,
-    title: "MOVIE 02",
-    url: "https://picsum.photos/seed/picsum/200/300",
-    overview:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-    popularity: 1222,
-    release_date: "26/06/12",
-  },
-  {
-    id: 3,
-    title: "MOVIE 03",
-    url: "https://picsum.photos/seed/picsum/200/300",
-    overview:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-    popularity: 1222,
-    release_date: "26/06/12",
-  },
-];
+// const mockData = [
+//   {
+//     id: 1,
+//     title: "MOVIE 01",
+//     url: "https://picsum.photos/seed/picsum/200/300",
+//     overview:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+//     popularity: 1222,
+//     release_date: "26/06/12",
+//   },
+//   {
+//     id: 2,
+//     title: "MOVIE 02",
+//     url: "https://picsum.photos/seed/picsum/200/300",
+//     overview:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+//     popularity: 1222,
+//     release_date: "26/06/12",
+//   },
+//   {
+//     id: 3,
+//     title: "MOVIE 03",
+//     url: "https://picsum.photos/seed/picsum/200/300",
+//     overview:
+//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+//     popularity: 1222,
+//     release_date: "26/06/12",
+//   },
+// ];
 
 type Props = {
   movies: Movie[];
@@ -68,7 +68,7 @@ export const Carrousel = ({
     <>
       <div className="relative w-full h-full" data-slot="carrousel">
         <div
-          className="relative w-full h-3/4 bg-gray-500 overflow-hidden "
+          className="relative w-full h-3/4 overflow-hidden "
           data-slot="carrousel-content"
         >
           {movies.map((movie, index) => {
@@ -83,11 +83,11 @@ export const Carrousel = ({
         </div>
         <button
           type="button"
-          className="absolute top-0 inset-s-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          className="absolute -top-10 inset-s-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none rounded-full"
           onClick={prevSlide}
           data-carousel-prev
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base dark:bg-gray-800/30 group-hover:rounded-full group-hover:bg-black/15 dark:group-hover:bg-gray-800/60 group-focus:ring-black/20 dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg
               className="w-5 h-5 text-white rtl:rotate-180"
               aria-hidden="true"
@@ -110,11 +110,11 @@ export const Carrousel = ({
         </button>
         <button
           type="button"
-          className="absolute top-0 inset-e-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+          className="absolute -top-10 inset-e-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none rounded-full"
           onClick={nextSlide}
           data-carousel-next
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base dark:bg-gray-800/30 group-hover:rounded-full group-hover:bg-black/15 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-black/20 dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg
               className="w-5 h-5 text-white rtl:rotate-180"
               aria-hidden="true"
