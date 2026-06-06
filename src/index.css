@@ -3,10 +3,19 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
 
+/* Supports weights 200-900 */
+@import '@fontsource-variable/nunito/wght.css';
 @custom-variant dark (&:is(.dark *));
 
 body {
   font-family: 'Nunito Variable', sans-serif;
+  height: 100vh;
+  /* width: 100vh; */
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
 }
 
 

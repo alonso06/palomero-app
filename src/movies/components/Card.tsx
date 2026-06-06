@@ -26,7 +26,7 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
           <div className="absolute inset-0 bg-black opacity-85"></div>
           <picture className="relative w-full h-full block" data-carrousel-item>
             <img
-              className="h-full w-full object-contain object-[80%_12%]"
+              className="h-full w-full object-contain object-[80%_12%] mask-[linear-gradient(black_80%,transparent)]"
               src={`https://image.tmdb.org/t/p/w500/${url}`}
               alt={`${title}-${index}`}
             />
@@ -34,10 +34,10 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
 
           <div
             data-slot="card-content"
-            className="absolute flex flex-col left-10 bottom-10 w-3/7 text-white gap-15 z-10"
+            className="absolute flex flex-col left-20 bottom-50 w-3/7 text-white gap-10 z-10"
           >
             <div className="flex flex-row justify-between items-end">
-              <div className="uppercase text-6xl font-bold">{title}</div>
+              <div className="uppercase text-5xl font-bold">{title}</div>
               <div className="text-lg">
                 <p>Popularidad:</p>
                 <p className="text-xl font-bold">{popularity}</p>

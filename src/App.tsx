@@ -8,9 +8,7 @@ function App() {
   const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
 
   const getTrendingMovies = async () => {
-    console.log("Open function");
     const movies = await getTrendingMoviesByDay();
-    console.log("movies ", movies);
     setTrendingMovies(movies);
   };
 
@@ -22,9 +20,13 @@ function App() {
   return (
     <>
       <Header />
-      <section className="w-full h-screen text-black flex flex-col justify-center items-center">
+      <section className="w-full h-3/4 text-black flex flex-col justify-center items-center">
         {/* SearchMovies */}
         <Carrousel movies={trendingMovies}></Carrousel>
+      </section>
+      <section>
+        <h1 className="text-4xl text-black">MIS FAVORITOS</h1>
+        <div className="bg-amber-200 h-44"></div>
       </section>
     </>
   );
