@@ -18,5 +18,6 @@ export const getTrendingMoviesByDay = async () => {
     overview: movie.overview,
     popularity: movie.popularity,
     release_date: movie.release_date,
+    adult: movie.adult,
   }));
 };

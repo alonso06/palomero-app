@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Card = ({ movie, index, currentIndex }: Props) => {
-  const { title, url, overview, popularity, release_date } = movie;
+  const { title, url, overview, popularity, release_date, adult } = movie;
   return (
     <>
       <div
@@ -38,16 +38,17 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
           >
             <div className="flex flex-row justify-between items-end">
               <div className="uppercase text-5xl font-bold">{title}</div>
-              <div className="text-lg">
+              {/* <div className="text-lg">
                 <p>Popularidad:</p>
-                <p className="text-xl font-bold">{popularity}</p>
-                {/* <span className="font-bold">{popularity}</span> */}
-              </div>
+                <p className="text-xl font-bold">{popularity}</p> */}
+              {/* <span className="font-bold">{popularity}</span> */}
+              {/* </div> */}
             </div>
             <div className="flex flex-col gap-2">
               <p className="line-clamp-3 text-ellipsis">{overview}</p>
-              <div className="mt-5 text-lg font-semibold">
-                {new Date(release_date).getFullYear()}
+              <div className="mt-5 text-lg font-semibold flex flex-row gap-5">
+                <div>{new Date(release_date).getFullYear()}</div>|
+                <div>{adult ? "+18" : "PG"}</div>
               </div>
             </div>
           </div>

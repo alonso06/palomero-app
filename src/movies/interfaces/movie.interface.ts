@@ -5,4 +5,5 @@ export interface Movie {
   overview: string;
   popularity: number;
   release_date: Date;
+  adult: boolean;
 }

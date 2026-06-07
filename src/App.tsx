@@ -7,13 +7,20 @@ import { Carrousel } from "./movies/components/Carrousel";
 function App() {
   const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
 
+  const sortMoviesByPopularity = (movies: Movie[]) => {
+    const sortedMovies = [...movies].sort(
+      (a, b) => b.popularity - a.popularity,
+    );
+    setTrendingMovies(sortedMovies);
+  };
+
   const getTrendingMovies = async () => {
     const movies = await getTrendingMoviesByDay();
-    setTrendingMovies(movies);
+    sortMoviesByPopularity(movies);
+    // setTrendingMovies(movies);
   };
 
   useEffect(() => {
-    console.log("useeffect");
     getTrendingMovies();
   }, []);
 
@@ -26,7 +33,7 @@ function App() {
       </section>
       <section>
         <h1 className="text-4xl text-black">MIS FAVORITOS</h1>
-        <div className="bg-amber-200 h-44"></div>
+        <div className="bg-amber-200"></div>
       </section>
     </>
   );
