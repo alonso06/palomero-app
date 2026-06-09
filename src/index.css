@@ -13,7 +13,7 @@ body {
   /* width: 100vh; */
 }
 
-#root {
+#root, body {
   height: 100vh;
   width: 100vw;
 }

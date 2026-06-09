@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const Card = ({ movie, index, currentIndex }: Props) => {
-  const { title, url, overview, popularity, release_date, adult } = movie;
+  const { title, url, overview, release_date, adult } = movie;
   return (
     <>
       <div
@@ -24,7 +24,10 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
           ></div>
           {/* Capa degradado */}
           <div className="absolute inset-0 bg-black opacity-85"></div>
-          <picture className="relative w-full h-full block" data-carrousel-item>
+          <picture
+            className="relative w-full h-full block aspect-2/3"
+            data-carrousel-item
+          >
             <img
               className="h-full w-full object-contain object-[80%_12%] mask-[linear-gradient(black_80%,transparent)]"
               src={`https://image.tmdb.org/t/p/w500/${url}`}
@@ -36,13 +39,9 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
             data-slot="card-content"
             className="absolute flex flex-col left-20 bottom-50 w-3/7 text-white gap-10 z-10"
           >
+            {/*TODO: !Eliminar clases flex */}
             <div className="flex flex-row justify-between items-end">
               <div className="uppercase text-5xl font-bold">{title}</div>
-              {/* <div className="text-lg">
-                <p>Popularidad:</p>
-                <p className="text-xl font-bold">{popularity}</p> */}
-              {/* <span className="font-bold">{popularity}</span> */}
-              {/* </div> */}
             </div>
             <div className="flex flex-col gap-2">
               <p className="line-clamp-3 text-ellipsis">{overview}</p>

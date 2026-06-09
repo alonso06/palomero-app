@@ -3,7 +3,7 @@ export interface Movie {
   title: string;
   url: string;
   overview: string;
-  popularity: number;
+  popularity?: number;
   release_date: Date;
   adult: boolean;
 }
