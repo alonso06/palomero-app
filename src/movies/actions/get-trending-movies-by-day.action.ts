@@ -1,16 +1,9 @@
-import axios from "axios";
 import type { TMDBResponse } from "../interfaces/tmdb.response";
+import { tmbdbApi } from "../api/tmbdb.api";
 
 export const getTrendingMoviesByDay = async () => {
-  const response = await axios.get<TMDBResponse>(
-    "https://api.themoviedb.org/3/trending/movie/day",
-    {
-      params: {
-        language: "es",
-        api_key: "914944fd3e3f01311bae73ae7eb954df",
-      },
-    },
-  );
+  const response = await tmbdbApi<TMDBResponse>("/trending/movie/day");
+
   return response.data.results.map((movie) => ({
     id: movie.id,
     title: movie.title,

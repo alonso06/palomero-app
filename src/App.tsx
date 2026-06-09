@@ -20,6 +20,33 @@ function App() {
     // setTrendingMovies(movies);
   };
 
+  const mockDataSearchMovies = [
+    {
+      id: 1,
+      title: "MOVIE 01",
+      url: "https://picsum.photos/seed/picsum/200/300",
+      overview:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+      release_date: "26/06/12",
+    },
+    {
+      id: 2,
+      title: "MOVIE 02",
+      url: "https://picsum.photos/seed/picsum/200/300",
+      overview:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+      release_date: "26/06/12",
+    },
+    {
+      id: 3,
+      title: "MOVIE 03",
+      url: "https://picsum.photos/seed/picsum/200/300",
+      overview:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
+      release_date: "26/06/12",
+    },
+  ];
+
   useEffect(() => {
     getTrendingMovies();
   }, []);
@@ -31,9 +58,9 @@ function App() {
         {/* SearchMovies */}
         <Carrousel movies={trendingMovies}></Carrousel>
       </section>
-      <section>
-        <h1 className="text-4xl text-black">MIS FAVORITOS</h1>
-        <div className="bg-amber-200"></div>
+      <section className="bg-black">
+        <h1 className="text-white text-4xl px-14 py-5">MIS FAVORITOS</h1>
+        <div className=""></div>
       </section>
     </>
   );

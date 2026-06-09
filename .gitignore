@@ -25,3 +25,6 @@ dist-ssr
 
 # Additional files
 Requeriments.md
+
+
+.env
