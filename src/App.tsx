@@ -51,7 +51,8 @@ function App() {
     },
     {
       id: 4,
-      title: "MOVIE 03",
+      title:
+        "MOVIE 03 MOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
       url: "https://picsum.photos/seed/picsum/200/300",
       overview:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
@@ -94,10 +95,11 @@ function App() {
   return (
     <>
       <Header />
-      <section className="w-full h-3/4 text-black flex flex-col justify-center items-center">
+      <section className="w-full h-[70vh] text-black flex flex-col justify-center items-center">
         {/* SearchMovies */}
         <Carrousel movies={trendingMovies}></Carrousel>
       </section>
+      {/* Favorite movies */}
       <section className="px-14 bg-black">
         <h1 className="text-white text-4xl py-5">MIS FAVORITOS</h1>
         <div className="grid grid-cols-3 gap-4 md:grid-cols-5">

@@ -16,7 +16,7 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
             data-carrousel-item
           >
             <img
-              className="h-full w-full object-contain mask-[linear-gradient(black_60%,transparent)]"
+              className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
               //   src={`https://image.tmdb.org/t/p/w500/${url}`}
               src={url}
               alt={`${title}-${index}`}
@@ -25,9 +25,11 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
 
           <div
             data-slot="card-content"
-            className="absolute left-10 bottom-15 text-white "
+            className="absolute left-5 right-5 bottom-5 text-white"
           >
-            <div className="uppercase text-xs font-bold">{title}</div>
+            <h3 className="uppercase whitespace-normal line-clamp-2 text-xs font-bold">
+              {title}
+            </h3>
           </div>
         </div>
       </div>
