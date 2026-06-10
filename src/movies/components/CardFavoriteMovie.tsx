@@ -12,7 +12,7 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
       <div key={index} data-slot="card" className="w-full h-full">
         <div className="relative w-full h-full">
           <picture
-            className="w-full h-full block aspect-2/3"
+            className="w-full h-full block aspect-3/4"
             data-carrousel-item
           >
             <img
@@ -25,7 +25,7 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
 
           <div
             data-slot="card-content"
-            className="absolute left-6 bottom-12 text-white "
+            className="absolute left-10 bottom-15 text-white "
           >
             <div className="uppercase text-xs font-bold">{title}</div>
           </div>
