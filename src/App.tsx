@@ -29,7 +29,6 @@ function App() {
 
   useEffect(() => {
     loadMovies();
-    console.log("UseEffect loadMovies");
   }, []);
 
   const handleSearch = async (query: string) => {

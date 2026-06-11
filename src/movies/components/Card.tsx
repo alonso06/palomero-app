@@ -37,7 +37,7 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
 
           <div
             data-slot="card-content"
-            className="absolute flex flex-col left-20 bottom-50 w-3/7 text-white gap-10 z-10"
+            className="absolute flex flex-col left-20 bottom-30 w-3/7 text-white gap-10 z-10"
           >
             {/*TODO: !Eliminar clases flex */}
             <div className="flex flex-row justify-between items-end">
