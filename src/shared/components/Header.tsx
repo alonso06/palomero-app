@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { SearchBar } from "./SearchBar";
 
-export const Header = () => {
+interface Props {
+  onQuery: (query: string) => void;
+}
+
+export const Header = ({ onQuery }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,6 +47,7 @@ export const Header = () => {
           isOpen={isOpen}
           inputRef={inputRef}
           setIsOpen={setIsOpen}
+          onQuery={onQuery}
         ></SearchBar>
         <div>
           <button

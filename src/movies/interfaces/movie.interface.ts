@@ -1,7 +1,7 @@
 export interface Movie {
   id: number;
   title: string;
-  url: string;
+  url: string | null;
   overview: string;
   popularity?: number;
   release_date: Date;

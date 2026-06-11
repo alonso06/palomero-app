@@ -17,8 +17,8 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
           >
             <img
               className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
-              //   src={`https://image.tmdb.org/t/p/w500/${url}`}
-              src={url}
+              src={`https://image.tmdb.org/t/p/w500/${url}`}
+              // src={url}
               alt={`${title}-${index}`}
             />
           </picture>

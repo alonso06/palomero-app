@@ -2,36 +2,6 @@ import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import type { Movie } from "../interfaces/movie.interface";
 
-// const mockData = [
-//   {
-//     id: 1,
-//     title: "MOVIE 01",
-//     url: "https://picsum.photos/seed/picsum/200/300",
-//     overview:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-//     popularity: 1222,
-//     release_date: "26/06/12",
-//   },
-//   {
-//     id: 2,
-//     title: "MOVIE 02",
-//     url: "https://picsum.photos/seed/picsum/200/300",
-//     overview:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-//     popularity: 1222,
-//     release_date: "26/06/12",
-//   },
-//   {
-//     id: 3,
-//     title: "MOVIE 03",
-//     url: "https://picsum.photos/seed/picsum/200/300",
-//     overview:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi quas rem molestiae",
-//     popularity: 1222,
-//     release_date: "26/06/12",
-//   },
-// ];
-
 type Props = {
   movies: Movie[];
   autoslide?: boolean;

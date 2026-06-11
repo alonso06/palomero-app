@@ -9,8 +9,6 @@ export const getSearchMovies = async (query: string) => {
     },
   });
 
-  console.log("response: ", response);
-
   return response.data.results.map((movie) => ({
     id: movie.id,
     title: movie.title,
