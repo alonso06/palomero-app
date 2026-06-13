@@ -3,13 +3,26 @@ import type { Movie } from "../interfaces/movie.interface";
 type Props = {
   movie: Movie;
   index: number;
+  onAddToFavorites?: (favoriteMovie: Movie) => void;
 };
 
-export const CardFavoriteMovie = ({ movie, index }: Props) => {
+export const CardFavoriteMovie = ({
+  movie,
+  index,
+  onAddToFavorites,
+}: Props) => {
   const { title, url } = movie;
+
   return (
     <>
-      <div key={index} data-slot="card" className="w-full h-full">
+      <div
+        onClick={() => {
+          onAddToFavorites?.(movie);
+        }}
+        key={index}
+        data-slot="card"
+        className="w-full h-full"
+      >
         <div className="relative w-full h-full">
           <picture
             className="w-full h-full block aspect-3/4"
@@ -18,7 +31,6 @@ export const CardFavoriteMovie = ({ movie, index }: Props) => {
             <img
               className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
               src={`https://image.tmdb.org/t/p/w500/${url}`}
-              // src={url}
               alt={`${title}-${index}`}
             />
           </picture>

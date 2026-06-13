@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 interface Props {
   isOpen: boolean;
@@ -10,23 +10,10 @@ interface Props {
 export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    const idTimeOut = setTimeout(() => {
-      onQuery(query);
-      console.log("useEffect");
-      setQuery("");
-      setIsOpen(false);
-    }, 1400);
-
-    return () => {
-      clearTimeout(idTimeOut);
-    };
-  }, [query, onQuery]);
-
   const handleSearch = () => {
     onQuery(query);
-    setQuery("");
-    setIsOpen(false);
+    // setQuery("");
+    // setIsOpen(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,7 +25,8 @@ export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
   return (
     <>
       <div
-        className={`z-20 absolute inset-x-0 flex items-center justify-center px-14 transition-all duration-300 ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"} `}
+        data-name="SearchBar"
+        className={`z-50 absolute inset-x-0 flex items-center justify-center px-14 transition-all duration-300 ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"} `}
       >
         <div className="flex items-center gap-3 w-full max-w-lg bg-white/10 hover:bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3">
           <button onClick={handleSearch}>

@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { SearchBar } from "./SearchBar";
+import { getSearchMovies } from "@/movies/actions/get-search-movies.action";
+import type { Movie } from "@/movies/interfaces/movie.interface";
+import { SearchResults } from "@/movies/components/SearchResults";
 
 interface Props {
-  onQuery: (query: string) => void;
+  onAddToFavorites: (favoriteMovie: Movie) => void;
 }
 
-export const Header = ({ onQuery }: Props) => {
+export const Header = ({ onAddToFavorites }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Effetcs
   useEffect(() => {
     if (!isOpen) return;
 
@@ -30,11 +35,19 @@ export const Header = ({ onQuery }: Props) => {
     };
   }, []);
 
+  // handle functions
+  const handleSearch = async (query: string) => {
+    query = query.trim().toLowerCase();
+    if (query.length === 0) return;
+    const movies = await getSearchMovies(query);
+    setMovies(movies);
+  };
+
   return (
     <>
       <div
         onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 z-10 bg-black/55 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 z-40 bg-black/55 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       ></div>
       <div className="relative py-4 px-14 bg-black gap-20 text-center flex flex-row justify-between">
         <a
@@ -47,9 +60,16 @@ export const Header = ({ onQuery }: Props) => {
           isOpen={isOpen}
           inputRef={inputRef}
           setIsOpen={setIsOpen}
-          onQuery={onQuery}
+          onQuery={handleSearch}
         ></SearchBar>
+        <SearchResults
+          onAddToFavorites={onAddToFavorites}
+          isOpen={isOpen}
+          movies={movies}
+        ></SearchResults>
+
         <div>
+          {/* Button search - Initial */}
           <button
             onClick={() => setIsOpen(true)}
             className={`transition-all duration-200 ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}
