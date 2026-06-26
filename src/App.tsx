@@ -3,7 +3,7 @@ import { Header } from "./shared/components/Header";
 import { getTrendingMoviesByDay } from "./movies/actions/get-trending-movies-by-day.action";
 import type { Movie } from "./movies/interfaces/movie.interface";
 import { Carrousel } from "./movies/components/Carrousel";
-import { CardFavoriteMovie } from "./movies/components/CardFavoriteMovie";
+import { CardMovie } from "./movies/components/CardMovie";
 
 //TODO: Revisar manejo de excepción
 const sortMoviesByPopularity = (movies: Movie[]) => {
@@ -30,8 +30,27 @@ function App() {
   }, []);
 
   const handleFavoriteMovies = (favoriteMovie: Movie) => {
+    if (favoriteMovies.length > 0) {
+      const isDuplicated = favoriteMovies.some(
+        (movie) => movie.id === favoriteMovie.id,
+      );
+
+      if (isDuplicated) return;
+    }
+
     setFavoriteMovies((prev) => [...prev, favoriteMovie]);
   };
+
+  const handleDeleteFavoriteMovies = (favoriteMovie: Movie) => {
+    const newFavoriteMovies = favoriteMovies.filter(
+      (movie) => movie.id !== favoriteMovie.id,
+    );
+
+    console.log("Nuevos favoritos", newFavoriteMovies);
+
+    setFavoriteMovies(newFavoriteMovies);
+  };
+
   return (
     <>
       <Header onAddToFavorites={handleFavoriteMovies} />
@@ -48,11 +67,13 @@ function App() {
         ) : (
           <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
             {favoriteMovies.map((movie, index) => (
-              <CardFavoriteMovie
+              <CardMovie
                 key={index}
                 movie={movie}
                 index={index}
-              ></CardFavoriteMovie>
+                showDeleteConfirm={true}
+                onDeleteFavorite={handleDeleteFavoriteMovies}
+              ></CardMovie>
             ))}
           </div>
         )}
