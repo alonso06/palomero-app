@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Header } from "./shared/components/Header";
 import { getTrendingMoviesByDay } from "./movies/actions/get-trending-movies-by-day.action";
 import type { Movie } from "./movies/interfaces/movie.interface";
 import { Carrousel } from "./movies/components/Carrousel";
 import { CardMovie } from "./movies/components/CardMovie";
+import { useMovies } from "./movies/hooks/useMovies";
 
 //TODO: Revisar manejo de excepción
 const sortMoviesByPopularity = (movies: Movie[]) => {
@@ -18,38 +19,23 @@ const getTrendingMovies = async () => {
 };
 
 function App() {
-  const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
-  const [favoriteMovies, setFavoriteMovies] = useState<Movie[]>([]);
+  const {
+    favoriteMovies,
+    trendingMovies,
+    handleDeleteFavoriteMovies,
+    handleFavoriteMovies,
+    setTrendingMovies,
+  } = useMovies();
+
   const loadMovies = async () => {
     const movies = await getTrendingMovies();
     setTrendingMovies(movies);
   };
 
   useEffect(() => {
+    console.log("Cargando películas en tendencia ...");
     loadMovies();
   }, []);
-
-  const handleFavoriteMovies = (favoriteMovie: Movie) => {
-    if (favoriteMovies.length > 0) {
-      const isDuplicated = favoriteMovies.some(
-        (movie) => movie.id === favoriteMovie.id,
-      );
-
-      if (isDuplicated) return;
-    }
-
-    setFavoriteMovies((prev) => [...prev, favoriteMovie]);
-  };
-
-  const handleDeleteFavoriteMovies = (favoriteMovie: Movie) => {
-    const newFavoriteMovies = favoriteMovies.filter(
-      (movie) => movie.id !== favoriteMovie.id,
-    );
-
-    console.log("Nuevos favoritos", newFavoriteMovies);
-
-    setFavoriteMovies(newFavoriteMovies);
-  };
 
   return (
     <>

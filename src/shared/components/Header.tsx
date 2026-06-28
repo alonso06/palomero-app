@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { SearchBar } from "./SearchBar";
-import { getSearchMovies } from "@/movies/actions/get-search-movies.action";
 import type { Movie } from "@/movies/interfaces/movie.interface";
 import { SearchResults } from "@/movies/components/SearchResults";
+import { useMovieSearch } from "@/movies/hooks/useMovieSearch";
 
 interface Props {
   onAddToFavorites: (favoriteMovie: Movie) => void;
 }
 
-export const Header = ({ onAddToFavorites }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
+// cache
+// { "id-movie1" :   Movie:{movie}, "id-movie-2"}
 
+export const Header = ({ onAddToFavorites }: Props) => {
+  const { isOpen, setIsOpen, inputRef, movies, handleSearch } =
+    useMovieSearch();
   // Effetcs
   useEffect(() => {
     if (!isOpen) return;
@@ -34,14 +35,6 @@ export const Header = ({ onAddToFavorites }: Props) => {
       document.removeEventListener("keydown", handleKey);
     };
   }, []);
-
-  // handle functions
-  const handleSearch = async (query: string) => {
-    query = query.trim().toLowerCase();
-    if (query.length === 0) return;
-    const movies = await getSearchMovies(query);
-    setMovies(movies);
-  };
 
   return (
     <>
