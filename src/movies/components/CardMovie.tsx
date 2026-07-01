@@ -3,7 +3,6 @@ import type { Movie } from "../interfaces/movie.interface";
 
 type Props = {
   movie: Movie;
-  index: number;
   showDeleteConfirm?: boolean;
   onAddToFavorites?: (favoriteMovie: Movie) => void;
   onDeleteFavorite?: (favoriteMovie: Movie) => void;
@@ -11,7 +10,6 @@ type Props = {
 
 export const CardMovie = ({
   movie,
-  index,
   showDeleteConfirm,
   onAddToFavorites,
   onDeleteFavorite,
@@ -62,7 +60,7 @@ export const CardMovie = ({
               onAddToFavorites?.(movie);
             }
           }}
-          key={index}
+          key={movie.id}
           data-slot="card"
           className={`w-full h-full transition-opacity duration-300 ${isSelected ? "opacity-40" : "opacity-100"}`}
         >
@@ -74,7 +72,7 @@ export const CardMovie = ({
               <img
                 className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
                 src={`https://image.tmdb.org/t/p/w500/${url}`}
-                alt={`${title}-${index}`}
+                alt={`${title}-${movie.id}`}
               />
             </picture>
 

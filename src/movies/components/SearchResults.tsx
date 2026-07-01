@@ -15,8 +15,8 @@ export const SearchResults = ({ movies, isOpen, onAddToFavorites }: Props) => {
         <div className="w-full overflow-hidden grid grid-cols-6 gap-3">
           {movies.map((movie) => (
             <CardMovie
+              key={movie.id}
               onAddToFavorites={onAddToFavorites}
-              index={movie.id}
               movie={movie}
             ></CardMovie>
           ))}

@@ -70,11 +70,10 @@ function App() {
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
-            {favoriteMovies.map((movie, index) => (
+            {favoriteMovies.map((movie) => (
               <CardMovie
-                key={index}
+                key={movie.id}
                 movie={movie}
-                index={index}
                 showDeleteConfirm={true}
                 onDeleteFavorite={handleDeleteFavoriteMovies}
               ></CardMovie>
