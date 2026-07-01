@@ -21,6 +21,7 @@ const getTrendingMovies = async () => {
 function App() {
   const {
     favoriteMovies,
+    idFavoriteMovies,
     trendingMovies,
     handleDeleteFavoriteMovies,
     handleFavoriteMovies,
@@ -39,7 +40,10 @@ function App() {
 
   return (
     <>
-      <Header onAddToFavorites={handleFavoriteMovies} />
+      <Header
+        idFavoriteMovies={idFavoriteMovies}
+        onAddToFavorites={handleFavoriteMovies}
+      />
       {/* Hero section */}
       <section className="w-full h-[70vh] text-black flex flex-col justify-center items-center">
         {/* SearchMovies */}
@@ -72,9 +76,9 @@ function App() {
           <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
             {favoriteMovies.map((movie) => (
               <CardMovie
+                mode="favorites"
                 key={movie.id}
                 movie={movie}
-                showDeleteConfirm={true}
                 onDeleteFavorite={handleDeleteFavoriteMovies}
               ></CardMovie>
             ))}

@@ -6,12 +6,13 @@ import { useMovieSearch } from "@/movies/hooks/useMovieSearch";
 
 interface Props {
   onAddToFavorites: (favoriteMovie: Movie) => void;
+  idFavoriteMovies: Set<number>;
 }
 
 // cache
 // { "id-movie1" :   Movie:{movie}, "id-movie-2"}
 
-export const Header = ({ onAddToFavorites }: Props) => {
+export const Header = ({ onAddToFavorites, idFavoriteMovies }: Props) => {
   const { isOpen, setIsOpen, inputRef, movies, handleSearch } =
     useMovieSearch();
   // Effetcs
@@ -56,9 +57,10 @@ export const Header = ({ onAddToFavorites }: Props) => {
           onQuery={handleSearch}
         ></SearchBar>
         <SearchResults
-          onAddToFavorites={onAddToFavorites}
           isOpen={isOpen}
           movies={movies}
+          idFavoriteMovies={idFavoriteMovies}
+          onAddToFavorites={onAddToFavorites}
         ></SearchResults>
 
         <div>

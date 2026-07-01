@@ -4,11 +4,18 @@ import type { Movie } from "../interfaces/movie.interface";
 type Props = {
   movies: Movie[];
   isOpen: boolean;
+  idFavoriteMovies: Set<number>;
   onAddToFavorites: (favoriteMovie: Movie) => void;
 };
 
-export const SearchResults = ({ movies, isOpen, onAddToFavorites }: Props) => {
+export const SearchResults = ({
+  movies,
+  isOpen,
+  idFavoriteMovies,
+  onAddToFavorites,
+}: Props) => {
   if (!isOpen || movies.length === 0) return;
+
   return (
     <>
       <div className="z-50 absolute inset-x-0 top-28 mt-2 flex justify-center px-14">
@@ -16,8 +23,10 @@ export const SearchResults = ({ movies, isOpen, onAddToFavorites }: Props) => {
           {movies.map((movie) => (
             <CardMovie
               key={movie.id}
-              onAddToFavorites={onAddToFavorites}
+              mode={"search"}
+              idFavoriteMovies={idFavoriteMovies}
               movie={movie}
+              onAddToFavorites={onAddToFavorites}
             ></CardMovie>
           ))}
         </div>

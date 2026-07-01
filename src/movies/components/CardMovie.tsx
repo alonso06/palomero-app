@@ -1,38 +1,62 @@
 import { useState } from "react";
 import type { Movie } from "../interfaces/movie.interface";
 
-type Props = {
-  movie: Movie;
-  showDeleteConfirm?: boolean;
-  onAddToFavorites?: (favoriteMovie: Movie) => void;
-  onDeleteFavorite?: (favoriteMovie: Movie) => void;
-};
+type Props =
+  | {
+      mode: "search";
+      movie: Movie;
+      idFavoriteMovies: Set<number>;
+      onAddToFavorites: (favoriteMovie: Movie) => void;
+      // onDeleteFavorite: (favoriteMovie: Movie) => void;
+    }
+  | {
+      mode: "favorites";
+      movie: Movie;
+      onDeleteFavorite: (favoriteMovie: Movie) => void;
+    };
 
-export const CardMovie = ({
-  movie,
-  showDeleteConfirm,
-  onAddToFavorites,
-  onDeleteFavorite,
-}: Props) => {
+export const CardMovie = (props: Props) => {
+  const { mode, movie } = props;
   const { title, url } = movie;
 
-  const [isSelected, setIsSelected] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
+
+  // Derivado directamente de props, sin estado ni efecto
+  const isSelected = mode === "search" && props.idFavoriteMovies.has(movie.id);
+
+  const handleClick = () => {
+    if (mode === "search") {
+      if (isSelected) {
+        // props.onDeleteFavorite(movie);
+        console.log("Eliminar");
+      } else {
+        props.onAddToFavorites(movie);
+      }
+    } else {
+      setConfirmingDelete(true);
+    }
+  };
 
   const handleConfirmDelete = (e: React.MouseEvent) => {
+    console.log("Render en confirmDelete");
     e.stopPropagation();
-    onDeleteFavorite?.(movie);
-    setIsSelected(false);
+    if (mode === "favorites") {
+      props.onDeleteFavorite(movie);
+    }
   };
 
   const handleCancelDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsSelected(false);
+    setConfirmingDelete(false);
   };
+
+  const isDimmed = mode === "search" ? isSelected : confirmingDelete;
 
   return (
     <>
       <div className="relative w-full h-full">
-        {showDeleteConfirm && isSelected && (
+        {/* Desde favoritos */}
+        {mode === "favorites" && confirmingDelete && (
           <div className="absolute w-full h-full inset-x-0 z-10 flex flex-col justify-center items-center gap-2 bg-black/70 px-2 py-1">
             <span className="text-white text-lg font-bold">
               ¿Quitar de la lista?
@@ -54,15 +78,10 @@ export const CardMovie = ({
           </div>
         )}
         <div
-          onClick={() => {
-            setIsSelected((prev) => !prev);
-            if (!isSelected) {
-              onAddToFavorites?.(movie);
-            }
-          }}
+          onClick={handleClick}
           key={movie.id}
           data-slot="card"
-          className={`w-full h-full transition-opacity duration-300 ${isSelected ? "opacity-40" : "opacity-100"}`}
+          className={`w-full h-full transition-opacity duration-300 ${isDimmed ? "opacity-40" : "opacity-100"}`}
         >
           <div className="relative w-full h-full">
             <picture

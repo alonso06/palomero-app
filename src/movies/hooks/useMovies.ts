@@ -27,8 +27,13 @@ export const useMovies = () => {
     setFavoriteMovies(newFavoriteMovies);
   };
 
+  const idFavoriteMovies = new Set(
+    favoriteMovies.map((favoriteMovie) => favoriteMovie.id),
+  );
+
   return {
     favoriteMovies,
+    idFavoriteMovies,
     trendingMovies,
     handleDeleteFavoriteMovies,
     handleFavoriteMovies,
