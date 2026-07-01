@@ -7,7 +7,7 @@ type Props =
       movie: Movie;
       idFavoriteMovies: Set<number>;
       onAddToFavorites: (favoriteMovie: Movie) => void;
-      // onDeleteFavorite: (favoriteMovie: Movie) => void;
+      onDeleteFavorite: (favoriteMovie: Movie) => void;
     }
   | {
       mode: "favorites";
@@ -21,13 +21,12 @@ export const CardMovie = (props: Props) => {
 
   const [confirmingDelete, setConfirmingDelete] = useState(false);
 
-  // Derivado directamente de props, sin estado ni efecto
   const isSelected = mode === "search" && props.idFavoriteMovies.has(movie.id);
 
   const handleClick = () => {
     if (mode === "search") {
       if (isSelected) {
-        // props.onDeleteFavorite(movie);
+        props.onDeleteFavorite(movie);
         console.log("Eliminar");
       } else {
         props.onAddToFavorites(movie);

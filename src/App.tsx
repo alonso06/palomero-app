@@ -43,6 +43,7 @@ function App() {
       <Header
         idFavoriteMovies={idFavoriteMovies}
         onAddToFavorites={handleFavoriteMovies}
+        onDeleteFavorites={handleDeleteFavoriteMovies}
       />
       {/* Hero section */}
       <section className="w-full h-[70vh] text-black flex flex-col justify-center items-center">

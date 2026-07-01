@@ -6,6 +6,7 @@ type Props = {
   isOpen: boolean;
   idFavoriteMovies: Set<number>;
   onAddToFavorites: (favoriteMovie: Movie) => void;
+  onDeleteFavorites: (favoriteMovie: Movie) => void;
 };
 
 export const SearchResults = ({
@@ -13,6 +14,7 @@ export const SearchResults = ({
   isOpen,
   idFavoriteMovies,
   onAddToFavorites,
+  onDeleteFavorites,
 }: Props) => {
   if (!isOpen || movies.length === 0) return;
 
@@ -27,6 +29,7 @@ export const SearchResults = ({
               idFavoriteMovies={idFavoriteMovies}
               movie={movie}
               onAddToFavorites={onAddToFavorites}
+              onDeleteFavorite={onDeleteFavorites}
             ></CardMovie>
           ))}
         </div>
