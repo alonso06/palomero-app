@@ -5,6 +5,7 @@ import type { Movie } from "./movies/interfaces/movie.interface";
 import { Carrousel } from "./movies/components/Carrousel";
 import { CardMovie } from "./movies/components/CardMovie";
 import { useMovies } from "./movies/hooks/useMovies";
+import { WhatsAppSharedButton } from "./movies/components/WhatsAppSharedButton";
 
 //TODO: Revisar manejo de excepción
 const sortMoviesByPopularity = (movies: Movie[]) => {
@@ -74,16 +75,24 @@ function App() {
             <span className="text-xl">Agrega tus favoritos</span>
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
-            {favoriteMovies.map((movie) => (
-              <CardMovie
-                mode="favorites"
-                key={movie.id}
-                movie={movie}
-                onDeleteFavorite={handleDeleteFavoriteMovies}
-              ></CardMovie>
-            ))}
-          </div>
+          <>
+            <div className="mb-7 flex items-center gap-5">
+              <div className="text-white text-xl">Compartir:</div>
+              <WhatsAppSharedButton
+                movies={favoriteMovies}
+              ></WhatsAppSharedButton>
+            </div>
+            <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
+              {favoriteMovies.map((movie) => (
+                <CardMovie
+                  mode="favorites"
+                  key={movie.id}
+                  movie={movie}
+                  onDeleteFavorite={handleDeleteFavoriteMovies}
+                ></CardMovie>
+              ))}
+            </div>
+          </>
         )}
       </section>
     </>
