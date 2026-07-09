@@ -54,7 +54,7 @@ export const Carrousel = ({
         </div>
         <button
           type="button"
-          className="absolute -top-10 inset-s-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none rounded-full"
+          className="absolute inset-s-0 z-30 flex items-center justify-center inset-y-0 px-4 cursor-pointer group focus:outline-none rounded-full"
           onClick={prevSlide}
           data-carousel-prev
         >
@@ -81,7 +81,7 @@ export const Carrousel = ({
         </button>
         <button
           type="button"
-          className="absolute -top-10 inset-e-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none rounded-full"
+          className="absolute inset-e-0 z-30 flex items-center justify-center inset-y-0 px-4 cursor-pointer group focus:outline-none rounded-full"
           onClick={nextSlide}
           data-carousel-next
         >
