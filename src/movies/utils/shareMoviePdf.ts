@@ -19,14 +19,19 @@ export async function shareMoviePdf(movies: Movie[]) {
       }
     }
   } else {
-    const filename = "peliculas-favoritas.pdf";
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-    const mensaje = "Te comparto la lista de mis peliculas favoritas";
-    window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`, "_blank");
+    // Fallback
+    downloadMovieListPdf(blob);
   }
 }
+
+const downloadMovieListPdf = (blob: Blob) => {
+  const filename = "peliculas-favoritas.pdf";
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+  const mensaje = "Te comparto la lista de mis peliculas favoritas";
+  window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`, "_blank");
+};
