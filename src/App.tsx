@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./shared/components/Header";
 import { getTrendingMoviesByDay } from "./movies/actions/get-trending-movies-by-day.action";
 import type { Movie } from "./movies/interfaces/movie.interface";
 import { Carrousel } from "./movies/components/Carrousel";
 import { CardMovie } from "./movies/components/CardMovie";
 import { useMovies } from "./movies/hooks/useMovies";
-import { WhatsAppSharedButton } from "./movies/components/WhatsAppSharedButton";
+import { PopupSharedOptions } from "./movies/components/PopupSharedOptions";
 
 //TODO: Revisar manejo de excepción
 const sortMoviesByPopularity = (movies: Movie[]) => {
@@ -29,6 +29,12 @@ function App() {
     setTrendingMovies,
   } = useMovies();
 
+  const [popupState, setPopupState] = useState(false);
+
+  const handleSharedClick = () => {
+    setPopupState(true);
+  };
+
   const loadMovies = async () => {
     const movies = await getTrendingMovies();
     setTrendingMovies(movies);
@@ -46,6 +52,14 @@ function App() {
         onAddToFavorites={handleFavoriteMovies}
         onDeleteFavorites={handleDeleteFavoriteMovies}
       />
+      {popupState ? (
+        <PopupSharedOptions
+          movies={favoriteMovies}
+          setPopupState={setPopupState}
+        ></PopupSharedOptions>
+      ) : (
+        <></>
+      )}
       {/* Hero section */}
       <section className="w-full h-[70vh] text-black flex flex-col justify-center items-center">
         {/* SearchMovies */}
@@ -77,10 +91,12 @@ function App() {
         ) : (
           <>
             <div className="mb-7 flex items-center gap-5">
-              <div className="text-white text-xl">Compartir:</div>
-              <WhatsAppSharedButton
-                movies={favoriteMovies}
-              ></WhatsAppSharedButton>
+              <button
+                onClick={handleSharedClick}
+                className="text-white text-xl p-3 bg-green-600 rounded-xl hover:bg-green-700"
+              >
+                Compartir por whatsapp
+              </button>
             </div>
             <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
               {favoriteMovies.map((movie) => (

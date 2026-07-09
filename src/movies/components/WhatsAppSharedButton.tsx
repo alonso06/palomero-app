@@ -1,37 +1,30 @@
 import type { Movie } from "../interfaces/movie.interface";
-import { formatMovieList } from "@/movies/utils/formatMovieText";
-import { buildWhatsappUrl } from "@/shared/utils/whatsapp";
 
 type Props = {
   movies: Movie[];
+  isActive: boolean;
+  text: string;
+  movieShareFunction: (movies: Movie[]) => void;
 };
 
-export const WhatsAppSharedButton = ({ movies }: Props) => {
+export const WhatsAppSharedButton = ({
+  movies,
+  isActive,
+  text,
+  movieShareFunction,
+}: Props) => {
   const handleClick = () => {
     if (movies.length === 0) return;
-    const text = formatMovieList(movies);
-    const url = buildWhatsappUrl(text);
-    window.open(url, "_blank", "noopener,noreferrer");
+    movieShareFunction(movies);
   };
 
   return (
     <button
-      className="cursor-pointer "
+      className={`cursor-pointer text-lg p-3 rounded-xl border border-gray-700 ${isActive ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-950 hover:bg-black"}`}
       onClick={handleClick}
-      aria-label="Compartir por WhatsApp"
+      aria-label={text}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="w-10 h-10 fill-green-600 stroke-white icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp hover:fill-green-700"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-        <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-      </svg>
+      {text}
     </button>
   );
 };

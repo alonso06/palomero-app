@@ -102,11 +102,30 @@ export const CardMovie = (props: Props) => {
               className="w-full h-full block aspect-3/4"
               data-carrousel-item
             >
-              <img
-                className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
-                src={`https://image.tmdb.org/t/p/w500/${url}`}
-                alt={`${title}-${movie.id}`}
-              />
+              {movie.url ? (
+                <img
+                  className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)]"
+                  src={`https://image.tmdb.org/t/p/w500/${url}`}
+                  alt={`${title}-${movie.id}`}
+                />
+              ) : (
+                <div className="h-full w-full object-fill mask-[linear-gradient(black_60%,transparent)] flex justify-center items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="w-12 h-12 fill-transparent stroke-white icon icon-tabler icons-tabler-outline icon-tabler-photo"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M15 8h.01" />
+                    <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12" />
+                    <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+                    <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
+                  </svg>
+                </div>
+              )}
             </picture>
 
             <div
