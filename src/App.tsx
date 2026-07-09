@@ -61,8 +61,7 @@ function App() {
         <></>
       )}
       {/* Hero section */}
-      <section className="w-full h-[70vh] text-black flex flex-col justify-center items-center">
-        {/* SearchMovies */}
+      <section className="w-full h-[70vh] text-black flex justify-center items-center">
         <Carrousel movies={trendingMovies}></Carrousel>
       </section>
       {/* Favorite movies */}

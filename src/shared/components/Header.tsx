@@ -48,7 +48,7 @@ export const Header = ({
         onClick={() => setIsOpen(false)}
         className={`fixed inset-0 z-40 bg-black/55 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       ></div>
-      <div className="relative py-4 px-14 bg-black gap-20 text-center flex flex-row justify-between">
+      <div className="relative py-4 px-5 bg-black gap-20 text-center flex flex-row justify-between md:px-8 lg:px-14">
         <a
           className={`text-white text-xl ${isOpen ? "blur-sm opacity-30 pointer-events-none" : ""}`}
           href="#"

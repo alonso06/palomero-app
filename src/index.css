@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* @import "shadcn/tailwind.css"; */
 @import "@fontsource-variable/inter";
 
 /* Supports weights 200-900 */
@@ -16,7 +15,6 @@ html, #root, body {
 #root {
  display: flex;
  flex-direction: column;
- 
 }
 
 

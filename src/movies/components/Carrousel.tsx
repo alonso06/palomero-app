@@ -38,7 +38,7 @@ export const Carrousel = ({
     <>
       <div className="relative w-full h-full" data-slot="carrousel">
         <div
-          className="relative w-full h-full overflow-hidden "
+          className="relative w-full h-full overflow-hidden"
           data-slot="carrousel-content"
         >
           {movies.map((movie, index) => {
@@ -58,7 +58,7 @@ export const Carrousel = ({
           onClick={prevSlide}
           data-carousel-prev
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base dark:bg-gray-800/30 group-hover:rounded-full group-hover:bg-black/15 dark:group-hover:bg-gray-800/60 group-focus:ring-black/20 dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span className="inline-flex items-center justify-center w-10 h-10 group-hover:rounded-full group-hover:bg-black/15 group-focus:ring-black/20 group-focus:outline-none">
             <svg
               className="w-5 h-5 text-white/50 rtl:rotate-180 group-hover:text-white"
               aria-hidden="true"
@@ -85,7 +85,7 @@ export const Carrousel = ({
           onClick={nextSlide}
           data-carousel-next
         >
-          <span className="inline-flex items-center justify-center w-10 h-10 rounded-base dark:bg-gray-800/30 group-hover:rounded-full group-hover:bg-black/15 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-black/20 dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <span className="inline-flex items-center justify-center w-10 h-10 group-hover:rounded-full group-hover:bg-black/15 group-focus:ring-black/20 group-focus:outline-none">
             <svg
               className="w-5 h-5 text-white/50 rtl:rotate-180 group-hover:text-white"
               aria-hidden="true"
