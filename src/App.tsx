@@ -62,22 +62,25 @@ function App() {
       )}
       {/* Hero section */}
       <section className="w-full h-[70vh] text-black flex justify-center items-center">
+        {/*TODO: Agregar título en tendencia */}
         <Carrousel movies={trendingMovies}></Carrousel>
       </section>
       {/* Favorite movies */}
-      <section className="px-14 bg-black">
-        <h2 className="text-white text-4xl py-5">MIS FAVORITOS</h2>
+      <section className="px-5 bg-black md:px-8 lg:px-14">
+        <h2 className="uppercase text-white font-bold py-5 text-3xl md:py-8 md:text-4xl lg:py-10">
+          Mis favoritos
+        </h2>
         {favoriteMovies.length === 0 ? (
           <div className="flex-1 text-white flex flex-col gap-2 justify-center items-center my-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="white"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              className="w-28 h-28 icon icon-tabler icons-tabler-outline icon-tabler-library-plus"
+              className="w-20 h-20 icon icon-tabler icons-tabler-outline icon-tabler-library-plus md:w-24 md:h-24 lg:w-28 lg:h-28"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M7 5.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667l0 -8.666" />
@@ -85,7 +88,7 @@ function App() {
               <path d="M11 10h6" />
               <path d="M14 7v6" />
             </svg>
-            <span className="text-xl">Agrega tus favoritos</span>
+            <span className="text-[1rem] md:text-xl">Agrega tus favoritos</span>
           </div>
         ) : (
           <>
