@@ -100,7 +100,7 @@ function App() {
                 Compartir por whatsapp
               </button>
             </div>
-            <div className="grid grid-cols-3 gap-4 md:grid-cols-5">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
               {favoriteMovies.map((movie) => (
                 <CardMovie
                   mode="favorites"

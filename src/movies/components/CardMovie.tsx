@@ -132,7 +132,7 @@ export const CardMovie = (props: Props) => {
               data-slot="card-content"
               className="absolute left-5 right-5 bottom-5 text-white"
             >
-              <h3 className="uppercase whitespace-normal line-clamp-2 text-xs font-bold">
+              <h3 className="uppercase whitespace-normal line-clamp-2 text-xs font-bold md:text-[0.875rem] lg:text-[1rem]">
                 {title}
               </h3>
             </div>
