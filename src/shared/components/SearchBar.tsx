@@ -48,7 +48,7 @@ export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-white text-lg placeholder:text-[1rem] placeholder:text-white/50 caret-white"
+            className="flex-1 bg-transparent border-none outline-none text-white text-[1rem] placeholder:text-[1rem] placeholder:text-white/50 caret-white md:text-lg md:placeholder:text-lg"
           />
           <button
             onClick={() => setIsOpen(false)}
