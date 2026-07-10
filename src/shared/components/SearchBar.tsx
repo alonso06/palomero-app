@@ -12,8 +12,6 @@ export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
 
   const handleSearch = () => {
     onQuery(query);
-    // setQuery("");
-    // setIsOpen(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -26,9 +24,9 @@ export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
     <>
       <div
         data-name="SearchBar"
-        className={`z-50 absolute inset-x-0 flex items-center justify-center px-14 transition-all duration-300 ${isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"} `}
+        className={`z-50 absolute inset-x-0 flex items-center justify-center px-8 transition-all duration-300 md:px-14 ${isOpen ? "opacity-100 translate-y-3 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"} `}
       >
-        <div className="flex items-center gap-3 w-full max-w-lg bg-white/10 hover:bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3">
+        <div className="flex items-center gap-2 max-w-lg bg-white/10 hover:bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-5 py-3 md:w-full md:gap-3">
           <button onClick={handleSearch}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +48,7 @@ export const SearchBar = ({ isOpen, inputRef, setIsOpen, onQuery }: Props) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-white text-lg placeholder:text-white/50 caret-white"
+            className="flex-1 bg-transparent border-none outline-none text-white text-lg placeholder:text-[1rem] placeholder:text-white/50 caret-white"
           />
           <button
             onClick={() => setIsOpen(false)}
