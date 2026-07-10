@@ -54,7 +54,7 @@ export const CardMovie = (props: Props) => {
               {mode === "search" && !isSelected ? (
                 <button
                   onClick={handleAdd}
-                  className="bg-green-600 px-3 py-3 rounded-full cursor-pointer hover:bg-green-700"
+                  className="group bg-green-600 px-3 py-3 rounded-full cursor-pointer hover:bg-green-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export const CardMovie = (props: Props) => {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    className="w-7 h-7 stroke-white fill-none icon icon-tabler icons-tabler-outline icon-tabler-heart hover:fill-white"
+                    className="w-6 h-6 stroke-white fill-none icon icon-tabler icons-tabler-outline icon-tabler-heart group-active:scale-110 transition-all duration-150 hover:fill-white lg:w-7 lg:h-7"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
@@ -71,7 +71,7 @@ export const CardMovie = (props: Props) => {
               ) : (
                 <button
                   onClick={handleDelete}
-                  className="bg-red-600 px-3 py-3 rounded-full cursor-pointer hover:bg-red-700"
+                  className="group bg-red-600 px-3 py-3 rounded-full cursor-pointer hover:bg-red-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +79,7 @@ export const CardMovie = (props: Props) => {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    className="w-7 h-7 stroke-white fill-none icon icon-tabler icons-tabler-outline icon-tabler-heart-off hover:fill-white"
+                    className="w-6 h-6 stroke-white fill-none icon icon-tabler icons-tabler-outline icon-tabler-heart-off group-active:scale-110 transition-all duration-150 hover:fill-white lg:w-7 lg:h-7"
                   >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M3 3l18 18" />
