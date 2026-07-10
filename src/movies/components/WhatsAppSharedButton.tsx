@@ -20,7 +20,7 @@ export const WhatsAppSharedButton = ({
 
   return (
     <button
-      className={`cursor-pointer text-lg p-3 rounded-xl border border-gray-700 ${isActive ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-950 hover:bg-black"}`}
+      className={`cursor-pointer text-[1rem] p-3 rounded-xl border border-gray-700 md:text-lg lg:text-xl ${isActive ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-950 hover:bg-black"}`}
       onClick={handleClick}
       aria-label={text}
     >

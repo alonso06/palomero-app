@@ -95,7 +95,7 @@ function App() {
             <div className="mb-7 flex items-center gap-5">
               <button
                 onClick={handleSharedClick}
-                className="text-white text-xl p-3 bg-green-600 rounded-xl hover:bg-green-700"
+                className="text-white text-[1rem] p-3 bg-green-600 rounded-xl hover:bg-green-700 md:text-lg lg:text-xl"
               >
                 Compartir por whatsapp
               </button>

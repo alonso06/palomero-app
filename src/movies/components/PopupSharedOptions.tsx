@@ -33,7 +33,7 @@ export const PopupSharedOptions = ({ setPopupState, movies }: Props) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative px-30 py-20 bg-black border border-gray-700 rounded-2xl"
+          className="relative px-12 py-9 bg-black border border-gray-700 rounded-2xl md:px-24 md:py-16 lg:px-30 lg:py-20"
         >
           <div className="flex justify-center items-center flex-col gap-5">
             <WhatsAppSharedButton
