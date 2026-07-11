@@ -61,13 +61,16 @@ function App() {
         <></>
       )}
       {/* Hero section */}
-      <section className="w-full h-[70vh] text-black flex justify-center items-center">
+      <section className="relative w-full h-[70vh] text-black">
         {/*TODO: Agregar título en tendencia */}
+        <h1 className="absolute z-20 top-4 left-4 md:top-6 md:left-8 lg:left-14 text-white text-xs md:text-sm lg:text-lg uppercase font-semibold tracking-wider bg-black/60 backdrop-blur-sm px-3 py-2 rounded-full">
+          En tendencia
+        </h1>
         <Carrousel movies={trendingMovies}></Carrousel>
       </section>
       {/* Favorite movies */}
       <section className="px-5 bg-black md:px-8 lg:px-14">
-        <h2 className="uppercase text-white font-bold py-5 text-3xl md:py-8 md:text-4xl lg:py-10">
+        <h2 className="text-center uppercase text-white font-bold py-5 text-3xl md:text-start md:py-8 md:text-4xl lg:text-5xl lg:py-10">
           Mis favoritos
         </h2>
         {favoriteMovies.length === 0 ? (
