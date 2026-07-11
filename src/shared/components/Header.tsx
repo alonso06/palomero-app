@@ -53,7 +53,7 @@ export const Header = ({
           className={`text-white text-xl ${isOpen ? "blur-sm opacity-30 pointer-events-none" : ""}`}
           href="#"
         >
-          CINEFILO
+          PALOMERO
         </a>
         <SearchBar
           isOpen={isOpen}
