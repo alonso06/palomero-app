@@ -37,7 +37,7 @@ export const Card = ({ movie, index, currentIndex }: Props) => {
           </picture>
           <div
             data-slot="card-content"
-            className="absolute flex flex-col text-white left-15 right-15 bottom-26 gap-4 md:gap-8 md:w-3/7 md:left-18 md:bottom-50 md:z-10 lg:gap-10 lg:left-20 lg:bottom-40 xl:bottom-60"
+            className="absolute flex flex-col text-white left-15 right-15 bottom-26 gap-4 md:gap-8 md:w-3/7 md:left-18 md:bottom-50 md:z-10 lg:gap-10 lg:left-20 lg:bottom-40"
           >
             <div className="uppercase font-semibold text-2xl md:text-3xl lg:text-4xl">
               {title}
