@@ -18,6 +18,7 @@ export const Header = ({
   onAddToFavorites,
   onDeleteFavorites,
 }: Props) => {
+  // useProps
   const { isOpen, setIsOpen, inputRef, movies, handleSearch } =
     useMovieSearch();
   // Effetcs
