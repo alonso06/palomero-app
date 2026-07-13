@@ -13,8 +13,8 @@ export interface Movie {
   original_title: string;
   overview: string;
   poster_path: string | null;
-  media_type: MediaType;
-  original_language: OriginalLanguage;
+  // media_type: MediaType;
+  // original_language: OriginalLanguage;
   genre_ids: number[];
   popularity: number;
   release_date: Date;
@@ -24,10 +24,10 @@ export interface Movie {
   vote_count: number;
 }
 
-export enum MediaType {
-  Movie = "movie",
-}
+// export enum MediaType {
+//   Movie = "movie",
+// }
 
-export enum OriginalLanguage {
-  En = "en",
-}
+// export enum OriginalLanguage {
+//   En = "en",
+// }

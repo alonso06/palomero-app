@@ -7,11 +7,12 @@ import { CardMovie } from "./movies/components/CardMovie";
 import { useMovies } from "./movies/hooks/useMovies";
 import { PopupSharedOptions } from "./movies/components/PopupSharedOptions";
 
-//TODO: Revisar manejo de excepción
-const sortMoviesByPopularity = (movies: Movie[]) => {
-  return [...movies].sort((a, b) => {
-    b.popularity - a.popularity;
-  });
+type MovieWithPopularity = Movie & {
+  popularity: number;
+};
+
+const sortMoviesByPopularity = (movies: MovieWithPopularity[]) => {
+  return [...movies].sort((a, b) => b.popularity - a.popularity);
 };
 
 const getTrendingMovies = async () => {
