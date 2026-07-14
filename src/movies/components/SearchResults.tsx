@@ -16,12 +16,12 @@ export const SearchResults = ({
   onAddToFavorites,
   onDeleteFavorites,
 }: Props) => {
-  if (!isOpen || movies.length === 0) return;
+  if (!isOpen || movies.length === 0) return null;
 
   return (
     <>
-      <div className="z-40 absolute inset-x-0 top-28 mt-2 flex justify-center px-14 pointer-events-none">
-        <div className="w-full overflow-hidden grid grid-cols-2 gap-3 md:grid md:grid-cols-4 lg:grid lg:grid-cols-6 pointer-events-auto">
+      <div className="z-40 fixed inset-x-0 top-28 flex justify-center px-14 pointer-events-none">
+        <div className="w-full max-h-[calc(100vh-8rem)] overflow-y-auto overflow-x-hidden grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 pointer-events-auto">
           {movies.map((movie) => (
             <CardMovie
               key={movie.id}
