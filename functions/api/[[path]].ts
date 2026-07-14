@@ -1,4 +1,4 @@
-// functions/api/tmdb/[[path]].ts
+// functions/api/[[path]].ts
 interface Env {
   TMDB_TOKEN: string;
 }
