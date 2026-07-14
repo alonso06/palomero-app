@@ -1,5 +1,5 @@
 import type { TMDBResponse } from "../interfaces/tmdb.response";
-import { tmbdbApi } from "../api/tmbdb.api";
+import { tmbdbApi } from "../../../functions/api/tmdb";
 
 export const getTrendingMoviesByDay = async () => {
   const response = await tmbdbApi<TMDBResponse>("/trending/movie/day");

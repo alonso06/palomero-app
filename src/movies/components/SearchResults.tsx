@@ -20,8 +20,8 @@ export const SearchResults = ({
 
   return (
     <>
-      <div className="z-50 absolute inset-x-0 top-28 mt-2 flex justify-center px-14">
-        <div className="w-full overflow-hidden grid grid-cols-2 gap-3 md:grid md:grid-cols-4 lg:grid lg:grid-cols-6">
+      <div className="z-40 absolute inset-x-0 top-28 mt-2 flex justify-center px-14 pointer-events-none">
+        <div className="w-full overflow-hidden grid grid-cols-2 gap-3 md:grid md:grid-cols-4 lg:grid lg:grid-cols-6 pointer-events-auto">
           {movies.map((movie) => (
             <CardMovie
               key={movie.id}

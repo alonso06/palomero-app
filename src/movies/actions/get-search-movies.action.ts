@@ -1,4 +1,4 @@
-import { tmbdbApi } from "../api/tmbdb.api";
+import { tmbdbApi } from "../../../functions/api/tmdb";
 import type { TMDBResponse } from "../interfaces/tmdb.response";
 
 export const getSearchMovies = async (query: string) => {
