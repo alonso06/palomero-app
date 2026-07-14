@@ -6,6 +6,7 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "types": [".wrangler/types/runtime.d.ts"],
     "paths": {
         "@/*": ["src/*"]
     }
