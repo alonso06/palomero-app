@@ -40,5 +40,8 @@ export function buildMoviePdfBlob(movies: Movie[]): Blob {
     }
   });
 
+  doc.text("https://palomero.pages.dev/", 10, y);
+  y += 15;
+
   return doc.output("blob");
 }

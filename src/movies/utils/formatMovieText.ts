@@ -12,6 +12,6 @@ const formatMovie = (movie: Movie) => {
 export const formatMovieList = (movies: Movie[]) => {
   const separator = "\n----------------------------\n\n";
   const header = "*Mis películas favoritas:*\n\n";
-  const website = "www.cinefilo.com";
+  const website = "https://palomero.pages.dev/";
   return header + movies.map(formatMovie).join(separator) + "\n\n" + website;
 };
