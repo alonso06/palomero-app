@@ -11,4 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    watch: {
+      exclude: ["node_modules/**", "dist/**", ".wrangler/**"],
+    },
+  },
 });

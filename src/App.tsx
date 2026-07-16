@@ -46,6 +46,11 @@ function App() {
     loadMovies();
   }, []);
 
+  useEffect(() => {
+    console.log("Guardando favoritos:", favoriteMovies);
+    localStorage.setItem("favorite-movies", JSON.stringify(favoriteMovies));
+  }, [favoriteMovies]);
+
   return (
     <>
       <Header

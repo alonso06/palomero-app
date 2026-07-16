@@ -28,3 +28,6 @@ Requeriments.md
 todo.md
 
 .env
+.dev.vars
+
+.wrangler
