@@ -6,10 +6,13 @@ import { Carrousel } from "./movies/components/Carrousel";
 import { CardMovie } from "./movies/components/CardMovie";
 import { useMovies } from "./movies/hooks/useMovies";
 import { PopupSharedOptions } from "./movies/components/PopupSharedOptions";
+import { isEntryValid, loadCache, saveCache } from "./movies/lib/cache";
 
 type MovieWithPopularity = Movie & {
   popularity: number;
 };
+const TRENDING_CACHE_KEY: string = "movie-search";
+const TRENDING_TTL: number = 1000 * 60 * 60;
 
 const sortMoviesByPopularity = (movies: MovieWithPopularity[]) => {
   return [...movies].sort((a, b) => b.popularity - a.popularity);
@@ -37,8 +40,18 @@ function App() {
   };
 
   const loadMovies = async () => {
+    const cache = loadCache(TRENDING_CACHE_KEY);
+    const cached = cache["daily"];
+
+    if (isEntryValid(cached, TRENDING_TTL)) {
+      setTrendingMovies(cached.data);
+      return;
+    }
+
     const movies = await getTrendingMovies();
     setTrendingMovies(movies);
+    cache["daily"] = { data: movies, timestamp: Date.now() };
+    saveCache(TRENDING_CACHE_KEY, cache);
   };
 
   useEffect(() => {
@@ -47,7 +60,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Guardando favoritos:", favoriteMovies);
     localStorage.setItem("favorite-movies", JSON.stringify(favoriteMovies));
   }, [favoriteMovies]);
 
