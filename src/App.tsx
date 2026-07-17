@@ -11,7 +11,8 @@ import { isEntryValid, loadCache, saveCache } from "./movies/lib/cache";
 type MovieWithPopularity = Movie & {
   popularity: number;
 };
-const TRENDING_CACHE_KEY: string = "movie-search";
+export const FAVORITE_CACHE_KEY: string = "favorite-movie";
+const TRENDING_CACHE_KEY: string = "trending-movie";
 const TRENDING_TTL: number = 1000 * 60 * 60;
 
 const sortMoviesByPopularity = (movies: MovieWithPopularity[]) => {
@@ -60,7 +61,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favorite-movies", JSON.stringify(favoriteMovies));
+    const cache = loadCache(FAVORITE_CACHE_KEY);
+    console.log("Cache", cache);
+    cache["favorites"] = { data: favoriteMovies, timestamp: Date.now() };
+    saveCache(FAVORITE_CACHE_KEY, cache);
   }, [favoriteMovies]);
 
   return (

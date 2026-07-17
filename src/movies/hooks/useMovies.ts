@@ -1,10 +1,19 @@
 import { useState } from "react";
 import type { Movie } from "../interfaces/movie.interface";
+import { isEntryValid, loadCache, saveCache } from "../lib/cache";
+import { FAVORITE_CACHE_KEY } from "@/App";
+
+const FAVORITE_TTL: number = 1000 * 60 * 60 * 24 * 7;
 
 export const getInitialState = (): Movie[] => {
-  const localFavoriteMovies = localStorage.getItem("favorite-movies");
-  if (!localFavoriteMovies) return [];
-  return JSON.parse(localFavoriteMovies);
+  const cache = loadCache(FAVORITE_CACHE_KEY);
+  const entry = cache["favorites"];
+  if (!isEntryValid(entry, FAVORITE_TTL)) {
+    delete cache["favorites"];
+    saveCache(FAVORITE_CACHE_KEY, cache);
+    return [];
+  }
+  return entry.data;
 };
 
 export const useMovies = () => {
