@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -12,8 +12,11 @@ export default defineConfig({
     },
   },
   build: {
-    watch: {
-      exclude: ["node_modules/**", "dist/**", ".wrangler/**"],
-    },
+    watch:
+      mode === "development"
+        ? {
+            exclude: ["node_modules/**", "dist/**", ".wrangler/**"],
+          }
+        : null,
   },
-});
+}));
