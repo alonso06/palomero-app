@@ -84,7 +84,6 @@ function App() {
       )}
       {/* Hero section */}
       <section className="relative w-full h-[70vh] text-black">
-        {/*TODO: Agregar título en tendencia */}
         <h1 className="absolute z-20 top-4 left-4 md:top-6 md:left-8 lg:left-14 text-white text-xs md:text-sm lg:text-lg uppercase font-semibold tracking-wider bg-black/60 backdrop-blur-sm px-3 py-1.5 md:py-2 rounded-full">
           En tendencia
         </h1>
