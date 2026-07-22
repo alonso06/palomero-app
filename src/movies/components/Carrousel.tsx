@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import type { Movie } from "../interfaces/movie.interface";
+import { CarrouselSlideButton } from "@/shared/components/CarrouselSlideButton";
 
 type Props = {
   movies: Movie[];
@@ -52,13 +53,11 @@ export const Carrousel = ({
             );
           })}
         </div>
-        <button
-          type="button"
-          className="absolute inset-s-0 z-30 flex items-center justify-center inset-y-0 px-4 cursor-pointer group focus:outline-none rounded-full"
+        <CarrouselSlideButton
+          type="prev"
           onClick={prevSlide}
-          data-carousel-prev
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 group-hover:rounded-full group-hover:bg-black/15 group-focus:ring-black/20 group-focus:outline-none">
+          label="Prev"
+          childrenSvg={
             <svg
               className="w-5 h-5 text-white/50 rtl:rotate-180 group-hover:text-white"
               aria-hidden="true"
@@ -76,16 +75,13 @@ export const Carrousel = ({
                 d="m15 19-7-7 7-7"
               />
             </svg>
-            <span className="sr-only">Previous</span>
-          </span>
-        </button>
-        <button
-          type="button"
-          className="absolute inset-e-0 z-30 flex items-center justify-center inset-y-0 px-4 cursor-pointer group focus:outline-none rounded-full"
+          }
+        ></CarrouselSlideButton>
+        <CarrouselSlideButton
+          type="next"
           onClick={nextSlide}
-          data-carousel-next
-        >
-          <span className="inline-flex items-center justify-center w-10 h-10 group-hover:rounded-full group-hover:bg-black/15 group-focus:ring-black/20 group-focus:outline-none">
+          label="Next"
+          childrenSvg={
             <svg
               className="w-5 h-5 text-white/50 rtl:rotate-180 group-hover:text-white"
               aria-hidden="true"
@@ -103,9 +99,8 @@ export const Carrousel = ({
                 d="m9 5 7 7-7 7"
               />
             </svg>
-            <span className="sr-only">Next</span>
-          </span>
-        </button>
+          }
+        ></CarrouselSlideButton>
       </div>
     </>
   );

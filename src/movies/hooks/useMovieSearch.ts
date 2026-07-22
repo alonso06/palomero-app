@@ -17,8 +17,8 @@ export const useMovieSearch = () => {
     query = query.trim().toLowerCase();
     if (query.length === 0) return;
 
-    // Sin TTL: una query expirada no debería llamar a la API
-    // Solo se debe expulsar cuando no quede espacio.
+    // Sin TTL: aunque exista una query expirada no s debería llamar a la API
+    // Solo se debe hacer cuando cuando no se supere el espacio asignado.
     const cached = moviesCache.current[query];
     if (cached) {
       setMovies(cached.data);
